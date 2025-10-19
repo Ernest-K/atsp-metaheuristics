@@ -9,9 +9,7 @@ import java.util.Locale;
 public class ResultsWriter {
 
     public static void writeToCsv(List<ExperimentStats> statsList, String fileName) throws IOException {
-        // Używamy try-with-resources, aby plik został automatycznie zamknięty
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
-            // Ustawiamy Locale.US, aby separatorem dziesiętnym była kropka, co jest standardem w CSV
             writer.println("Konfiguracja,Najlepszy,Najgorszy,Sredni,OdchStd,SredniCzasMs,BladSredniProc,BladNajlepszyProc");
 
             for (ExperimentStats stats : statsList) {

@@ -14,7 +14,6 @@ public final class TSPSolution {
         this.executionTimeMillis = executionTimeMillis;
     }
 
-    // Gettery
     public List<Integer> getTour() {
         return tour;
     }

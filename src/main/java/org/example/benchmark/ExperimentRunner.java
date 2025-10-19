@@ -72,7 +72,7 @@ public class ExperimentRunner {
 
 
         // --- Scenariusz 2: Badanie mutationRate ---
-        double bestCxRate = 0.80; // Zakładamy, że to będzie najlepszy wynik z S1
+        double bestCxRate = 0.80;
         int constTournamentSize2 = 2;
         configs.add(createConfig("S2.1: Mut Rate=0.05", bestCxRate, 0.05, constTournamentSize2));
         configs.add(createConfig("S2.2: Mut Rate=0.1", bestCxRate, 0.1, constTournamentSize2));
@@ -81,7 +81,7 @@ public class ExperimentRunner {
 
 
         // --- Scenariusz 3: Badanie tournamentSize ---
-        double bestMutRate = 0.5; // Zakładamy, że to będzie najlepszy wynik z S2
+        double bestMutRate = 0.5;
         configs.add(createConfig("S3.1: Tourn Size=2", bestCxRate, bestMutRate, 2));
         configs.add(createConfig("S3.2: Tourn Size=5", bestCxRate, bestMutRate, 5));
         configs.add(createConfig("S3.3: Tourn Size=10", bestCxRate, bestMutRate, 10));
@@ -102,14 +102,12 @@ public class ExperimentRunner {
     private static void printSummaryTable(List<ExperimentStats> allStats) {
         System.out.println("\n\n--- PODSUMOWANIE EKSPERYMENTÓW ---");
 
-        // Definiujemy format nagłówka i danych
         String headerFormat = "| %-25s | %-10s | %-10s | %-10s | %-15s | %-15s | %-15s |%n";
         String dataFormat =   "| %-25s | %-10d | %-10.2f | %-10.2f | %-15.2f | %-15.2f | %-15.2f |%n";
 
         int tableWidth = 124;
         System.out.println("-".repeat(tableWidth));
 
-        // Drukujemy nagłówek
         System.out.printf(headerFormat,
                 "Konfiguracja",
                 "Najlepszy",
@@ -121,16 +119,15 @@ public class ExperimentRunner {
         );
         System.out.println("-".repeat(tableWidth));
 
-        // Drukujemy dane dla każdego eksperymentu
         for (ExperimentStats stats : allStats) {
-            System.out.printf(dataFormat, // Używamy poprawnego formatu dla danych
-                    stats.getExperimentName(),         // %s  (String)
-                    stats.getBestDistance(),           // %d  (int)
-                    stats.getAverageDistance(),        // %.2f (double)
-                    stats.getStdDeviationDistance(),   // %.2f (double)
-                    stats.getAverageTimeMillis(),      // %.2f (double)
-                    stats.getAverageGapPercent(),      // %.2f (double)
-                    stats.getBestGapPercent()          // %.2f (double)
+            System.out.printf(dataFormat,
+                    stats.getExperimentName(),
+                    stats.getBestDistance(),
+                    stats.getAverageDistance(),
+                    stats.getStdDeviationDistance(),
+                    stats.getAverageTimeMillis(),
+                    stats.getAverageGapPercent(),
+                    stats.getBestGapPercent()
             );
         }
         System.out.println("-".repeat(tableWidth));

@@ -67,7 +67,6 @@ public class TSPDataReader {
             }
         }
 
-        // Zamiast zwracać int[][], tworzymy i zwracamy obiekt TSPInstance
         return new TSPInstance(matrix, optimalDistance);
     }
 }
