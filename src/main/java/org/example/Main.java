@@ -7,6 +7,7 @@ import org.example.ga.operator.crossover.CrossoverOperator;
 import org.example.ga.operator.crossover.OrderedCrossover;
 import org.example.ga.operator.crossover.PartiallyMappedCrossover;
 import org.example.ga.operator.mutation.MutationOperator;
+import org.example.ga.operator.mutation.ScrambleMutation;
 import org.example.ga.operator.mutation.SwapMutation;
 import org.example.ga.operator.selection.RouletteWheelSelection;
 import org.example.ga.operator.selection.SelectionOperator;
@@ -29,8 +30,8 @@ public class Main {
         GaConfig config = new GaConfig(
                 500,
                 1000,
-                0.90,
-                0.5,
+                0.80,
+                0.1,
                 2,
                 0
         );
@@ -44,7 +45,8 @@ public class Main {
 //            SelectionOperator selection = new RouletteWheelSelection();
             SelectionOperator selection = new TournamentSelection(config.getTournamentSize());
             CrossoverOperator crossover = new PartiallyMappedCrossover();
-            MutationOperator mutation = new SwapMutation();
+//            MutationOperator mutation = new SwapMutation();
+            MutationOperator mutation = new ScrambleMutation();
 
 
             GeneticAlgorithm ga = new GeneticAlgorithm(
