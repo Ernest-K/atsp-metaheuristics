@@ -25,15 +25,14 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        final String instanceFileName = "ftv47.atsp";
-        final int instanceOptimalDistance = 1776;
+        final String instanceFileName = "ftv170.atsp";
+        final int instanceOptimalDistance = 2755;
         GaConfig config = new GaConfig(
                 500,
-                1000,
-                0.80,
-                0.1,
-                2,
-                0
+                10000,
+                0.90,
+                0.05,
+                1
         );
 
         try {
@@ -43,8 +42,9 @@ public class Main {
             System.out.println("----------------------------------------------------");
 
 //            SelectionOperator selection = new RouletteWheelSelection();
-            SelectionOperator selection = new TournamentSelection(config.getTournamentSize());
-            CrossoverOperator crossover = new PartiallyMappedCrossover();
+            SelectionOperator selection = new TournamentSelection(5);
+//            CrossoverOperator crossover = new PartiallyMappedCrossover();
+            CrossoverOperator crossover = new OrderedCrossover();
 //            MutationOperator mutation = new SwapMutation();
             MutationOperator mutation = new ScrambleMutation();
 
